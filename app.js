@@ -158,7 +158,16 @@ const dealerActions = () => {
 /* Settlement Function */
 const settlement = () => {
   for (let i = 0; i < game.length - 1; i++) {
-    if (game[i].cardvalue > game[game.length - 1].cardvalue) {
+    if (
+      game[i].cardvalue === game[game.length - 1].cardvalue ||
+      (game[i].cardvalue > 21 && game[game.length - 1].cardvalue > 21)
+    ) {
+    } else if (
+      (game[i].cardvalue > game[game.length - 1].cardvalue &&
+        game[i].cardvalue <= 21) ||
+      (game[i].cardvalue < game[game.length - 1].cardvalue &&
+        game[game.length - 1].cardvalue > 21)
+    ) {
       game[i].money += game[i].betamount;
     } else game[i].money -= game[i].betamount;
   }
