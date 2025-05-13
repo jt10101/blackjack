@@ -11,6 +11,7 @@ const game = [
 
 const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
+  message: "",
 };
 
 //---------------------------- Cached Elements ----------------------------//
@@ -19,6 +20,7 @@ const hitButtonElement = document.getElementById("hit");
 const standButtonElement = document.getElementById("stand");
 const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
+const gameMessage = document.querySelector("p"); // game message field
 
 //---------------------------- Sub Functions ----------------------------//
 
@@ -79,10 +81,13 @@ const standActions = () => {
     betButtonElement.removeAttribute("disabled", "");
     hitButtonElement.setAttribute("disabled", "");
     standButtonElement.setAttribute("disabled", "");
+    gamestate.message = `Player ${gamestate.turn + 1} Turn!`;
   } else {
     hitButtonElement.setAttribute("disabled", "");
     standButtonElement.setAttribute("disabled", "");
+    gamestate.message = `Dealer's Turn!`;
   }
+  renderMsg();
 };
 
 const hitActions = () => {
@@ -112,8 +117,13 @@ const render = () => {
     playerCards.textContent = gameCardsDetails[printCard].display;
     playerCards.setAttribute("class", `cardface ${colorCard}`);
   }
+  //render bet amount
   const playerBet = document.getElementById(`bet-${gamestate.turn + 1}`);
   playerBet.textContent = `Bet Amount: $ ${game[activeplayer].betamount}`;
+};
+
+const renderMsg = () => {
+  gameMessage.textContent = gamestate.message;
 };
 
 /* Calculate Value of hand */
