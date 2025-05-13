@@ -9,7 +9,6 @@ const game = [
     cardvalue: 0,
     money: 100,
     betamount: 0,
-    conclusion: "",
   }, // Player 1 properties
   {
     state: "active",
@@ -17,7 +16,6 @@ const game = [
     cardvalue: 0,
     money: 100,
     betamount: 0,
-    conclusion: "",
   }, // Player 2 properties
   {
     state: "active",
@@ -25,7 +23,6 @@ const game = [
     cardvalue: 0,
     money: 100,
     betamount: 0,
-    conclusion: "",
   }, // Player 3 properties
   { state: "dealer", cards: [], cardvalue: 0 }, // Dealer properties
 ];
@@ -37,11 +34,10 @@ const gamestate = {
   totalround: 2,
 };
 
-let deck = [
-  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-  22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-  41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
-];
+const initialDeck = Array.from({ length: 52 }, (_, i) => i);
+
+//---------------------------- Variables ----------------------------//
+let deck = [...initialDeck];
 
 //---------------------------- Cached Elements ----------------------------//
 
@@ -95,7 +91,8 @@ const betActions = () => {
   let activeplayer = gamestate.turn;
   if ((game[activeplayer].state = "active")) {
     if (betAmount.value <= 0 || betAmount.value > game[activeplayer].money) {
-      console.log("Not enough money");
+      gamestate.message = "Not enough money";
+      renderMsg();
       return;
     } else {
       game[activeplayer].betamount = Number(betAmount.value);
@@ -107,6 +104,7 @@ const betActions = () => {
 
       // once a bet is locked in, we will display the first two cards + calculate the current hand value
       render();
+      renderMsg();
       calcValue();
     }
   }
@@ -224,7 +222,7 @@ const resetRender = () => {
       for (let j = 3; j < 6; j++) {
         let x = document.getElementById(`${i + 1}-${j}`);
         x.textContent = "";
-        x.setAttribute("class", "empty");
+        x.setAttribute("class", "cardempty");
       }
     } else if (game[i].state === "inactive") {
       for (let j = 1; j < 3; j++) {
@@ -235,9 +233,19 @@ const resetRender = () => {
       for (let j = 3; j < 6; j++) {
         let x = document.getElementById(`${i + 1}-${j}`);
         x.textContent = "";
-        x.setAttribute("class", "empty");
+        x.setAttribute("class", "cardempty");
       }
     }
+  }
+  for (let i = 1; i < 3; i++) {
+    let x = document.getElementById(`d-${i}`);
+    x.textContent = "";
+    x.setAttribute("class", "cardback");
+  }
+  for (let i = 3; i < 6; i++) {
+    let x = document.getElementById(`d-${i}`);
+    x.textContent = "";
+    x.setAttribute("class", "cardempty");
   }
 };
 
@@ -264,27 +272,27 @@ const dealerValue = () => {
 };
 
 const nextGame = () => {
-  // game deck to be reset
-  deck = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
-    40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
-  ];
-  // game object reset
-  for (let i = 0; i < game.length - 1; i++) {
-    // function to set status
-    game[i].betamount = 0;
-    game[i].cardvalue = 0;
-    game[i].cards.length = 0;
-  }
-  setPlayerState();
-  resetRender();
-  // setTurn();
+  deck = [...initialDeck];
   shuffle();
-  // dealcards();
-  console.log(gamestate);
-  console.log(game);
-  console.log(deck);
+  for (let i = 0; i < game.length; i++) {
+    game[i].cards = [];
+    game[i].cardvalue = 0;
+    game[i].betamount = 0;
+    if (i < game.length - 1 && game[i].money <= 0) {
+      game[i].state = "inactive";
+    } else if (i < game.length - 1) {
+      game[i].state = "active";
+    } else {
+      game[i].state = "dealer";
+    }
+  }
+  setTurn();
+  resetRender();
+  betAmount.disabled = false;
+  betButtonElement.disabled = false;
+  hitButtonElement.disabled = true;
+  standButtonElement.disabled = true;
+  dealcards();
 };
 
 //---------------------------- Event Listeners ----------------------------//
