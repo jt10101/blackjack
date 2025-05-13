@@ -1,0 +1,177 @@
+body {
+  background-color: gray;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.gameboard {
+  display: flex;
+  flex-direction: column;
+  background-color: #181b22;
+  height: 670px;
+  width: 1000px;
+  border: solid;
+
+  /* border for viz */
+  /* border-style: solid; */
+}
+
+.gameheader {
+  background-color: 181b22;
+  color: #dda74f;
+  height: 50px;
+  font-size: 30px;
+  align-content: center;
+  text-align: center;
+  /* border for viz */
+  /* border-style: solid; */
+}
+
+.gap {
+  height: 20px;
+  background-color: #36654d;
+  color: #36654d;
+}
+
+.playarea {
+  display: flex;
+  flex-direction: row;
+  background-color: #36654d;
+  color: #505050;
+  height: 600px;
+  color: white;
+  /* border for viz */
+  /* border-style: solid; */
+}
+
+.playerdetails {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  /* border for viz */
+  /* border-style: solid; */
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  /* background-color: lightcoral; */
+  /* border for viz */
+  /* border-style: solid; */
+}
+
+.playerID {
+  height: 20%;
+  /* background-color: green; */
+  align-content: center;
+}
+
+.moneyvalue {
+  height: 20%;
+  align-content: center;
+  /* background-color: white; */
+}
+
+.betAmount {
+  height: 20%;
+  align-content: center;
+  /* background-color: peru; */
+}
+
+.cardarea {
+  width: 60%;
+}
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 150px;
+  /* background-color: lightcyan; */
+}
+
+.scoreboard-active {
+  width: 20%;
+}
+
+.scoreboard {
+  height: 150px;
+  /* background-color: lightseagreen; */
+}
+
+.active-zone {
+  display: flex;
+  /* background-color: lightsalmon; */
+  height: 450px;
+}
+
+.d-zone {
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+#bet-amount {
+  height: 30px;
+  width: 100px;
+}
+.submitbet {
+  height: 30px;
+  width: 50px;
+}
+
+.decision {
+  height: 35px;
+  width: 75px;
+}
+
+#hit {
+  background-color: lightgreen;
+}
+#stand {
+  background-color: lightcoral;
+}
+
+.cardface {
+  width: 60px;
+  height: 90px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.cardback {
+  width: 60px; /* Adjust as needed */
+  height: 90px; /* Adjust as needed */
+  background-color: #333; /* A dark background color */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee; /* Light text color */
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* we use this card class to put in an empty card */
+.cardempty {
+  width: 60px;
+  height: 90px;
+  background-color: #36654d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
