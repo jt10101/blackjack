@@ -3,9 +3,30 @@ import { gameCardsDetails } from "./carddeck";
 //---------------------------- Constants ----------------------------//
 
 const game = [
-  { state: "active", cards: [], cardvalue: 0, money: 100, betamount: 0 }, // Player 1 properties
-  { state: "inactive", cards: [], cardvalue: 0, money: 100, betamount: 0 }, // Player 2 properties
-  { state: "active", cards: [], cardvalue: 0, money: 100, betamount: 0 }, // Player 3 properties
+  {
+    state: "active",
+    cards: [],
+    cardvalue: 0,
+    money: 100,
+    betamount: 0,
+    conclusion: "",
+  }, // Player 1 properties
+  {
+    state: "active",
+    cards: [],
+    cardvalue: 0,
+    money: 100,
+    betamount: 0,
+    conclusion: "",
+  }, // Player 2 properties
+  {
+    state: "active",
+    cards: [],
+    cardvalue: 0,
+    money: 100,
+    betamount: 0,
+    conclusion: "",
+  }, // Player 3 properties
   { state: "dealer", cards: [], cardvalue: 0 }, // Dealer properties
 ];
 
@@ -57,6 +78,16 @@ const dealcards = () => {
 const setTurn = () => {
   const findFirstactive = game.findIndex((player) => player.state === "active");
   gamestate.turn = findFirstactive;
+};
+
+const setPlayerState = () => {
+  for (let i = 0; i < game.length - 1; i++) {
+    if (game[i].money >= 0) {
+      game[i].state = "Active";
+    } else {
+      game[i].state = "Inactive";
+    }
+  }
 };
 
 /* Player Action Functions */
@@ -120,6 +151,18 @@ const dealerActions = () => {
     dealerValue();
   }
   dealerRender();
+  settlement();
+  console.log(game);
+};
+
+/* Settlement Function */
+const settlement = () => {
+  for (let i = 0; i < game.length - 1; i++) {
+    if (game[i].cardvalue > game[game.length - 1].cardvalue) {
+      game[i].money += game[i].betamount;
+    } else game[i].money -= game[i].betamount;
+  }
+  render();
 };
 
 /* Render Functions */
@@ -138,6 +181,12 @@ const render = () => {
   //render bet amount
   const playerBet = document.getElementById(`bet-${gamestate.turn + 1}`);
   playerBet.textContent = `Bet Amount: $ ${game[activeplayer].betamount}`;
+
+  //render money balance
+  for (let i = 0; i < game.length - 1; i++) {
+    let playerMoney = document.getElementById(`m-${i + 1}`);
+    playerMoney.textContent = `$${game[i].money}`;
+  }
 };
 
 const renderMsg = () => {
@@ -152,6 +201,34 @@ const dealerRender = () => {
     let colorCard = gameCardsDetails[printCard].color;
     dealerCards.textContent = gameCardsDetails[printCard].display;
     dealerCards.setAttribute("class", `cardface ${colorCard}`);
+  }
+};
+
+const resetRender = () => {
+  for (let i = 0; i < game.length - 1; i++) {
+    if (game[i].state === "active") {
+      for (let j = 1; j < 3; j++) {
+        let x = document.getElementById(`${i + 1}-${j}`);
+        x.textContent = "";
+        x.setAttribute("class", "cardback");
+      }
+      for (let j = 3; j < 6; j++) {
+        let x = document.getElementById(`${i + 1}-${j}`);
+        x.textContent = "";
+        x.setAttribute("class", "empty");
+      }
+    } else if (game[i].state === "inactive") {
+      for (let j = 1; j < 3; j++) {
+        let x = document.getElementById(`${i + 1}-${j}`);
+        x.textContent = "";
+        x.setAttribute("class", "cardempty");
+      }
+      for (let j = 3; j < 6; j++) {
+        let x = document.getElementById(`${i + 1}-${j}`);
+        x.textContent = "";
+        x.setAttribute("class", "empty");
+      }
+    }
   }
 };
 
@@ -191,6 +268,14 @@ const nextGame = () => {
     game[i].cardvalue = 0;
     game[i].cards.length = 0;
   }
+  setPlayerState();
+  resetRender();
+  // setTurn();
+  shuffle();
+  // dealcards();
+  console.log(gamestate);
+  console.log(game);
+  console.log(deck);
 };
 
 //---------------------------- Event Listeners ----------------------------//
@@ -202,6 +287,7 @@ nextButton.addEventListener("click", nextGame);
 //---------------------------- Main Function ----------------------------//
 
 const init = () => {
+  // setPlayerState();
   setTurn();
   shuffle();
   dealcards();
