@@ -1,5 +1,5 @@
 //--------------- card details ---------------//
-import { gameCardsDetails, deck } from "./carddeck";
+import { gameCardsDetails, deck } from "../carddeck";
 //--------------- constants ---------------//
 const game = {
   turn: 1, // 1 = player1, 2 = player2, 3 = player 3
