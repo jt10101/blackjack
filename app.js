@@ -29,6 +29,13 @@ const game = {
   round: 0,
 };
 
+const game2 = [
+  { cards: [], cardvalue: 0 }, // Dealer properties
+  { cards: [], cardvalue: 0, money: 0, betamount: 0 }, // Player 1 properties
+  { cards: [], cardvalue: 0, money: 0, betamount: 0 }, // Player 2 properties
+  { cards: [], cardvalue: 0, money: 0, betamount: 0 }, // Player 3 properties
+];
+
 //--------------- cached elements ---------------//
 const hitButtonElement = document.getElementById("hit");
 const standButtonElement = document.getElementById("stand");
@@ -45,7 +52,7 @@ const init = () => {
   shuffle(deck);
   // console.log(deck); // checks deck after shuffle
   for (let i = 0; i < 4; i++) {
-    let x = Object.values(game.cards)[i];
+    let x = Object.values(game[i].cards);
     x.push(deck[i]); // pushes first card
     x.push(deck[i + 4]); // pushes second card
   }
