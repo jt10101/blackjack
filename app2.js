@@ -19,7 +19,6 @@ const hitButtonElement = document.getElementById("hit");
 const standButtonElement = document.getElementById("stand");
 const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
-let activeplayer = gamestate.turn;
 
 //---------------------------- Sub Functions ----------------------------//
 
@@ -51,6 +50,7 @@ const setTurn = () => {
 
 /* Player Action Functions */
 const betActions = () => {
+  let activeplayer = gamestate.turn;
   if ((game[activeplayer].state = "active")) {
     if (betAmount.value <= 0 || betAmount.value > game[activeplayer].money) {
       console.log("Not enough money");
@@ -71,6 +71,7 @@ const betActions = () => {
 };
 
 const standActions = () => {
+  let activeplayer = gamestate.turn;
   game[activeplayer].state = "over";
   if (gamestate.turn < game.length - 2) {
     setTurn();
@@ -81,6 +82,20 @@ const standActions = () => {
   } else {
     hitButtonElement.setAttribute("disabled", "");
     standButtonElement.setAttribute("disabled", "");
+  }
+};
+
+const hitActions = () => {
+  let activeplayer = gamestate.turn;
+  game[activeplayer].cards.push(deck[0]);
+  deck.splice(0, 1);
+  render();
+  calcValue();
+  if (
+    game[activeplayer].cardValue >= 21 ||
+    game[activeplayer].cards.length > 4
+  ) {
+    hitButtonElement.setAttribute("disabled", "");
   }
 };
 
@@ -96,11 +111,9 @@ const render = () => {
     let colorCard = gameCardsDetails[printCard].color;
     playerCards.textContent = gameCardsDetails[printCard].display;
     playerCards.setAttribute("class", `cardface ${colorCard}`);
-
-    //render bet amount on each player's detail frame
-    // const playerBet = document.getElementById(`bet-${game.turn}`);
-    // playerBet.textContent = `Bet Amount: $ ${game.betAmount[activeplayer]}`;
   }
+  const playerBet = document.getElementById(`bet-${gamestate.turn + 1}`);
+  playerBet.textContent = `Bet Amount: $ ${game[activeplayer].betamount}`;
 };
 
 /* Calculate Value of hand */
@@ -116,19 +129,10 @@ const calcValue = () => {
   }
 };
 
-/* Set Active Player function */
-// const setActivePlayer = () => {
-//   for (let i = 0; i < game.length - 1; i++) {
-//     if (game[activeplayer].state === "active") {
-
-//     }
-//   }
-// };
-
 //---------------------------- Event Listeners ----------------------------//
 
 betButtonElement.addEventListener("click", betActions);
-// hitButtonElement.addEventListener("click", hitActions);
+hitButtonElement.addEventListener("click", hitActions);
 standButtonElement.addEventListener("click", standActions);
 
 //---------------------------- Main Function ----------------------------//
@@ -139,4 +143,3 @@ const main = () => {
   dealcards();
 };
 main();
-console.log(game);
