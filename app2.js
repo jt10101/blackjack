@@ -44,7 +44,7 @@ const dealcards = () => {
 };
 
 // this function is needed to allow for when player 1's money value is $0 at the start of a new hand
-const turnInit = () => {
+const setTurn = () => {
   const findFirstactive = game.findIndex((player) => player.state === "active");
   gamestate.turn = findFirstactive;
 };
@@ -68,23 +68,19 @@ const betActions = () => {
       calcValue();
     }
   }
-  console.log(game);
 };
 
 const standActions = () => {
+  game[activeplayer].state = "over";
   if (gamestate.turn < game.length - 2) {
-    gamestate.turn++;
+    setTurn();
     betAmount.removeAttribute("disabled", "");
     betButtonElement.removeAttribute("disabled", "");
     hitButtonElement.setAttribute("disabled", "");
     standButtonElement.setAttribute("disabled", "");
-    // renderMsg();
   } else {
     hitButtonElement.setAttribute("disabled", "");
     standButtonElement.setAttribute("disabled", "");
-    console.log("dealer's turn");
-    // dealerValue();
-    // dealerActions();
   }
 };
 
@@ -138,8 +134,9 @@ standButtonElement.addEventListener("click", standActions);
 //---------------------------- Main Function ----------------------------//
 
 const main = () => {
-  turnInit();
+  setTurn();
   shuffle();
   dealcards();
 };
 main();
+console.log(game);
