@@ -71,7 +71,19 @@ const betActions = () => {
     }
   }
 };
-
+const hitActions = () => {
+  let activeplayer = gamestate.turn;
+  game[activeplayer].cards.push(deck[0]);
+  deck.splice(0, 1);
+  render();
+  calcValue();
+  if (
+    game[activeplayer].cardValue >= 21 ||
+    game[activeplayer].cards.length > 4
+  ) {
+    hitButtonElement.setAttribute("disabled", "");
+  }
+};
 const standActions = () => {
   let activeplayer = gamestate.turn;
   game[activeplayer].state = "over";
@@ -86,22 +98,19 @@ const standActions = () => {
     hitButtonElement.setAttribute("disabled", "");
     standButtonElement.setAttribute("disabled", "");
     gamestate.message = `Dealer's Turn!`;
+    dealerActions();
   }
   renderMsg();
 };
 
-const hitActions = () => {
-  let activeplayer = gamestate.turn;
-  game[activeplayer].cards.push(deck[0]);
-  deck.splice(0, 1);
-  render();
-  calcValue();
-  if (
-    game[activeplayer].cardValue >= 21 ||
-    game[activeplayer].cards.length > 4
-  ) {
-    hitButtonElement.setAttribute("disabled", "");
+/* Dealer Actions */
+const dealerActions = () => {
+  while (game[game.length - 1].cardvalue <= 15) {
+    game[game.length - 1].cards.push(deck[0]);
+    deck.splice(0, 1);
+    dealerValue();
   }
+  dealerRender();
 };
 
 /* Render Functions */
@@ -126,6 +135,17 @@ const renderMsg = () => {
   gameMessage.textContent = gamestate.message;
 };
 
+const dealerRender = () => {
+  for (let i = 0; i < game[game.length - 1].cards.length; i++) {
+    //render dealer cards
+    const dealerCards = document.getElementById(`d-${i + 1}`);
+    let printCard = game[game.length - 1].cards[i];
+    let colorCard = gameCardsDetails[printCard].color;
+    dealerCards.textContent = gameCardsDetails[printCard].display;
+    dealerCards.setAttribute("class", `cardface ${colorCard}`);
+  }
+};
+
 /* Calculate Value of hand */
 const calcValue = () => {
   let activeplayer = gamestate.turn;
@@ -137,6 +157,15 @@ const calcValue = () => {
     sumTotal += valueCard;
     game[activeplayer].cardvalue = sumTotal;
   }
+};
+
+const dealerValue = () => {
+  let handtotal = 0;
+  let x;
+  for (let i = 0; i < game[game.length - 1].cards.length; i++) {
+    handtotal += gameCardsDetails[game[game.length - 1].cards[i]].value;
+  }
+  game[game.length - 1].cardvalue = handtotal;
 };
 
 //---------------------------- Event Listeners ----------------------------//
