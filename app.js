@@ -1,4 +1,4 @@
-import { gameCardsDetails, deck } from "./carddeck";
+import { gameCardsDetails } from "./carddeck";
 
 //---------------------------- Constants ----------------------------//
 
@@ -12,7 +12,15 @@ const game = [
 const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "",
+  round: 1,
+  totalround: 2,
 };
+
+let deck = [
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+  41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+];
 
 //---------------------------- Cached Elements ----------------------------//
 
@@ -21,6 +29,7 @@ const standButtonElement = document.getElementById("stand");
 const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
 const gameMessage = document.querySelector("p"); // game message field
+const nextButton = document.getElementById("nextgame");
 
 //---------------------------- Sub Functions ----------------------------//
 
@@ -168,17 +177,34 @@ const dealerValue = () => {
   game[game.length - 1].cardvalue = handtotal;
 };
 
+const nextGame = () => {
+  // game deck to be reset
+  deck = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+    40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+  ];
+  // game object reset
+  for (let i = 0; i < game.length - 1; i++) {
+    // function to set status
+    game[i].betamount = 0;
+    game[i].cardvalue = 0;
+    game[i].cards.length = 0;
+  }
+};
+
 //---------------------------- Event Listeners ----------------------------//
 
 betButtonElement.addEventListener("click", betActions);
 hitButtonElement.addEventListener("click", hitActions);
 standButtonElement.addEventListener("click", standActions);
-
+nextButton.addEventListener("click", nextGame);
 //---------------------------- Main Function ----------------------------//
 
-const main = () => {
+const init = () => {
   setTurn();
   shuffle();
   dealcards();
 };
-main();
+
+init();
