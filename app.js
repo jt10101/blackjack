@@ -14,14 +14,14 @@ const game = [
     state: "active",
     cards: [],
     cardvalue: 0,
-    money: 100,
+    money: 120,
     betamount: 0,
   }, // Player 2 properties
   {
     state: "active",
     cards: [],
     cardvalue: 0,
-    money: 100,
+    money: 110,
     betamount: 0,
   }, // Player 3 properties
   { state: "dealer", cards: [], cardvalue: 0 }, // Dealer properties
@@ -29,9 +29,10 @@ const game = [
 
 const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
-  message: "",
+  message: "Player 1 Turn!",
   round: 1,
-  totalround: 2,
+  totalround: 5,
+  scoreboard: [],
 };
 
 const initialDeck = Array.from({ length: 52 }, (_, i) => i);
@@ -47,6 +48,9 @@ const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
 const gameMessage = document.querySelector("p"); // game message field
 const nextButton = document.getElementById("nextgame");
+const firstPlace = document.querySelector("firstplace");
+const secondPlace = document.querySelector("secondplace");
+const thirdPlace = document.querySelector("thirdplace");
 
 //---------------------------- Sub Functions ----------------------------//
 
@@ -56,6 +60,7 @@ const shuffle = () => {
     array.sort(() => Math.random() - 0.5);
   }
   shuffle(deck);
+  console.log(game.sort((x, y) => game.money - game.money));
 };
 
 const dealcards = () => {
@@ -116,11 +121,12 @@ const hitActions = () => {
   render();
   calcValue();
   if (
-    game[activeplayer].cardValue >= 21 ||
+    game[activeplayer].cardvalue >= 21 ||
     game[activeplayer].cards.length > 4
   ) {
-    hitButtonElement.setAttribute("disabled", "");
+    hitButtonElement.disabled = true;
   }
+  console.log(game);
 };
 const standActions = () => {
   let activeplayer = gamestate.turn;
@@ -194,6 +200,9 @@ const render = () => {
     let playerMoney = document.getElementById(`m-${i + 1}`);
     playerMoney.textContent = `$${game[i].money}`;
   }
+
+  //render message
+  gameMessage.textContent = gamestate.message;
 };
 
 const renderMsg = () => {
@@ -247,6 +256,7 @@ const resetRender = () => {
     x.textContent = "";
     x.setAttribute("class", "cardempty");
   }
+  gamestate.message = "Player 1 Turn!";
 };
 
 /* Calculate Value of hand */
@@ -288,6 +298,7 @@ const nextGame = () => {
   }
   setTurn();
   resetRender();
+  renderMsg();
   betAmount.disabled = false;
   betButtonElement.disabled = false;
   hitButtonElement.disabled = true;
