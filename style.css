@@ -7,7 +7,7 @@ body {
 .gameboard {
   display: flex;
   flex-direction: column;
-  background-color: #181b22;
+  background-color: #36654d;
   height: 670px;
   width: 1000px;
   border: solid;
@@ -19,7 +19,7 @@ body {
 .gameheader {
   display: flex;
   justify-content: space-between;
-  background-color: 181b22;
+  background-color: #181b22;
   color: #dda74f;
   height: 50px;
   font-size: 30px;
