@@ -52,8 +52,16 @@ const roundText = document.getElementById("roundnumber");
 const firstPlace = document.querySelector("firstplace");
 const secondPlace = document.querySelector("secondplace");
 const thirdPlace = document.querySelector("thirdplace");
+const startButton = document.getElementById("start");
+const startPage = document.getElementById("startpageid");
+const gamePage = document.getElementById("gameboardid");
 
 //---------------------------- Sub Functions ----------------------------//
+/* Start game */
+const startGame = () => {
+  startPage.hidden = true;
+  gamePage.hidden = false;
+};
 
 /* Init Functions */
 const shuffle = () => {
@@ -126,7 +134,6 @@ const hitActions = () => {
   ) {
     hitButtonElement.disabled = true;
   }
-  console.log(game); // remove when done
 };
 const standActions = () => {
   let activeplayer = gamestate.turn;
@@ -314,6 +321,8 @@ betButtonElement.addEventListener("click", betActions);
 hitButtonElement.addEventListener("click", hitActions);
 standButtonElement.addEventListener("click", standActions);
 nextButton.addEventListener("click", nextGame);
+startButton.addEventListener("click", startGame);
+
 //---------------------------- Main Function ----------------------------//
 
 const init = () => {
