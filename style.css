@@ -17,6 +17,8 @@ body {
 }
 
 .gameheader {
+  display: flex;
+  justify-content: space-between;
   background-color: 181b22;
   color: #dda74f;
   height: 50px;
