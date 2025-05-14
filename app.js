@@ -102,11 +102,10 @@ const betActions = () => {
     } else {
       game[activeplayer].betamount = Number(betAmount.value);
       // disables betting functions + enables HIT and stand buttons
-      betAmount.setAttribute("disabled", "");
-      betButtonElement.setAttribute("disabled", "");
-      hitButtonElement.removeAttribute("disabled", "");
-      standButtonElement.removeAttribute("disabled", "");
-
+      betAmount.disabled = true;
+      betButtonElement.disabled = true;
+      hitButtonElement.disabled = false;
+      standButtonElement.disabled = false;
       // once a bet is locked in, we will display the first two cards + calculate the current hand value
       render();
       renderMsg();
@@ -126,21 +125,21 @@ const hitActions = () => {
   ) {
     hitButtonElement.disabled = true;
   }
-  console.log(game);
+  console.log(game); // remove when done
 };
 const standActions = () => {
   let activeplayer = gamestate.turn;
   game[activeplayer].state = "over";
   if (gamestate.turn < game.length - 2) {
     setTurn();
-    betAmount.removeAttribute("disabled", "");
-    betButtonElement.removeAttribute("disabled", "");
-    hitButtonElement.setAttribute("disabled", "");
-    standButtonElement.setAttribute("disabled", "");
+    betAmount.disabled = false;
+    betButtonElement.disabled = false;
+    hitButtonElement.disabled = true;
+    standButtonElement.disabled = true;
     gamestate.message = `Player ${gamestate.turn + 1} Turn!`;
   } else {
-    hitButtonElement.setAttribute("disabled", "");
-    standButtonElement.setAttribute("disabled", "");
+    hitButtonElement.disabled = true;
+    standButtonElement.disabled = true;
     gamestate.message = `Dealer's Turn!`;
     dealerActions();
   }
