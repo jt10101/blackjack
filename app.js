@@ -48,6 +48,7 @@ const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
 const gameMessage = document.querySelector("p"); // game message field
 const nextButton = document.getElementById("nextgame");
+const roundText = document.getElementById("roundnumber");
 const firstPlace = document.querySelector("firstplace");
 const secondPlace = document.querySelector("secondplace");
 const thirdPlace = document.querySelector("thirdplace");
@@ -206,6 +207,7 @@ const render = () => {
 
 const renderMsg = () => {
   gameMessage.textContent = gamestate.message;
+  roundText.textContent = `Round ${gamestate.round} of ${gamestate.totalround}`;
 };
 
 const dealerRender = () => {
@@ -295,6 +297,7 @@ const nextGame = () => {
       game[i].state = "dealer";
     }
   }
+  gamestate.round++;
   setTurn();
   resetRender();
   renderMsg();
