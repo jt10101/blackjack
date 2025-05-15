@@ -35,7 +35,7 @@ const gamestate = {
   scoreboard: [],
 };
 
-const initialDeck = Array.from({ length: 52 }, (_, i) => i);
+const initialDeck = Array.from({ length: 52 }, (_, i) => i); // I took this code from somewhere, will find source in abit
 
 //---------------------------- Variables ----------------------------//
 let deck = [...initialDeck];
@@ -78,6 +78,7 @@ const returnMain = () => {
 };
 
 /* Init Functions */
+// https://javascript.info/task/shuffle
 const shuffle = () => {
   function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
