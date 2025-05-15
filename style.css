@@ -1,9 +1,10 @@
 body {
   background-color: gray;
-  /* font-family: sans-serif; */
+  font-family: sans-serif;
   margin: 0;
 }
 
+/* Game board CSS */
 .gameboard {
   display: flex;
   flex-direction: column;
@@ -187,6 +188,7 @@ body {
   color: black;
 }
 
+/* start page CSS  */
 .startpage {
   background-color: #36654d;
   font-family: "rosarivo";
@@ -212,4 +214,29 @@ body {
   width: 200px;
   height: 80px;
   /* margin: 100px; */
+}
+
+/* How to page */
+.howtopage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #36654d;
+  font-family: "rosarivo";
+  height: 670px;
+  width: 1000px;
+  border: solid;
+}
+
+.returntomain {
+  width: 150px;
+}
+
+.rules,
+ol {
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
 }

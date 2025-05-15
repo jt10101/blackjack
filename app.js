@@ -55,12 +55,26 @@ const thirdPlace = document.querySelector("thirdplace");
 const startButton = document.getElementById("start");
 const startPage = document.getElementById("startpageid");
 const gamePage = document.getElementById("gameboardid");
+// Instructions elements
+const howToButton = document.getElementById("howto");
+const returnButton = document.querySelector(".returntomain");
+const howToPage = document.querySelector(".howtopage");
 
 //---------------------------- Sub Functions ----------------------------//
 /* Start game */
 const startGame = () => {
   startPage.hidden = true;
   gamePage.hidden = false;
+};
+
+const howTo = () => {
+  startPage.hidden = true;
+  howToPage.hidden = false;
+};
+
+const returnMain = () => {
+  howToPage.hidden = true;
+  startPage.hidden = false;
 };
 
 /* Init Functions */
@@ -325,6 +339,8 @@ hitButtonElement.addEventListener("click", hitActions);
 standButtonElement.addEventListener("click", standActions);
 nextButton.addEventListener("click", nextGame);
 startButton.addEventListener("click", startGame);
+howToButton.addEventListener("click", howTo);
+returnButton.addEventListener("click", returnMain);
 
 //---------------------------- Main Function ----------------------------//
 

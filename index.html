@@ -23,6 +23,7 @@
     </style>
   </head>
   <body>
+    <!-- Start Page -->
     <section class="startpage" id="startpageid">
       <div id="welcomelogo">LOGO GOES HERE</div>
       <div>
@@ -30,6 +31,22 @@
         <button class="howtobutton" id="howto">HOW TO PLAY</button>
       </div>
     </section>
+
+    <!-- How To Page -->
+    <section class="howtopage" hidden>
+      <div>
+        <p class="rules">RULES:
+          <ol>
+            <li>Player wins by getting a hand that is as high as possible without exceeding 21</li>
+            <li>Player can only bet an amount that is more than or equal to their money balance</li>
+            <li>Player wins an equivalent of their bet amount if they beat the dealer's hand</li>
+            <li>A win is defined as having a hand value that is higher than the dealer's</li>
+          </ol></p>
+      </div>
+      <div><button class="returntomain">Return</button></div>
+    </section>
+
+    <!-- Actual game board -->
     <section class="gameboard" id="gameboardid" hidden>
       <div class="gameheader">
         <div id="logo">BLACKJACK21!</div>
