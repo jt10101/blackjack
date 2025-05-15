@@ -4,6 +4,7 @@ import { gameCardsDetails } from "./carddeck";
 
 const game = [
   {
+    playerID: 1,
     state: "active",
     cards: [],
     cardvalue: 0,
@@ -11,6 +12,7 @@ const game = [
     betamount: 0,
   }, // Player 1 properties
   {
+    playerID: 2,
     state: "active",
     cards: [],
     cardvalue: 0,
@@ -18,6 +20,7 @@ const game = [
     betamount: 0,
   }, // Player 2 properties
   {
+    playerID: 3,
     state: "active",
     cards: [],
     cardvalue: 0,
@@ -32,7 +35,8 @@ const gamestate = {
   message: "Player 1 Turn!",
   round: 1,
   totalround: 5,
-  scoreboard: [],
+  leaderboard: [],
+  ranking: [],
 };
 
 const initialDeck = Array.from({ length: 52 }, (_, i) => i); // I took this code from somewhere, will find source in abit
@@ -247,6 +251,8 @@ const dealerRender = () => {
   }
 };
 
+const rankingRender = () => {};
+
 const resetRender = () => {
   for (let i = 0; i < game.length - 1; i++) {
     if (game[i].state === "active") {
@@ -335,6 +341,26 @@ const nextGame = () => {
 
   dealcards();
 };
+
+/* Leaderboard functions */
+const leaderBoard = () => {
+  for (let i = 0; i < gamestate.leaderboard.length; i++) {
+    let sortPlayerIndex = gamestate.leaderboard.indexOf(
+      Math.max(...gamestate.leaderboard)
+    );
+    let sortPlayer = `Player ${sortPlayerIndex + 1} : $${Math.max(
+      ...gamestate.leaderboard
+    )}`;
+    gamestate.ranking.push(sortPlayer);
+    gamestate.leaderboard[sortPlayerIndex] = 0;
+  }
+};
+
+const gameEnd = () => {};
+
+// Put all monies in an array
+// [1,2,3,4,5]
+// index of the max value = winner!
 
 //---------------------------- Event Listeners ----------------------------//
 
