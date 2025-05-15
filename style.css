@@ -47,6 +47,11 @@ body {
   /* border-style: solid; */
 }
 
+.playareadivider {
+  width: 15px;
+  color: #36654d;
+}
+
 .playerdetails {
   display: flex;
   flex-direction: column;
