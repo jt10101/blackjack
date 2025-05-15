@@ -6,8 +6,8 @@ body {
 
 /* Game board CSS */
 .gameboard {
-  /* display: flex; */
-  display: none;
+  display: flex;
+  /* display: none; */
   flex-direction: column;
   background-color: #36654d;
   /* font master for whole game board */

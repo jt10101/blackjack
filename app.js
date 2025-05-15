@@ -71,7 +71,7 @@ const howToPage = document.querySelector(".howtopage");
 /* Start game */
 const startGame = () => {
   startPage.hidden = true;
-  gamePage.style.display = "flex";
+  gamePage.hidden = false;
 };
 
 const howTo = () => {
