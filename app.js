@@ -150,6 +150,7 @@ const standActions = () => {
     standButtonElement.disabled = true;
     gamestate.message = `Dealer's Turn!`;
     dealerActions();
+    nextButton.disabled = false;
   }
   renderMsg();
 };
@@ -312,6 +313,8 @@ const nextGame = () => {
   betButtonElement.disabled = false;
   hitButtonElement.disabled = true;
   standButtonElement.disabled = true;
+  nextButton.disabled = true;
+
   dealcards();
 };
 
