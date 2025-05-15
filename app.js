@@ -53,12 +53,15 @@ const betAmount = document.getElementById("bet-amount"); // text input field for
 const gameMessage = document.getElementById("gamemessage"); // game message field
 const nextButton = document.getElementById("nextgame");
 const roundText = document.getElementById("roundnumber");
-const firstPlace = document.querySelector("firstplace");
-const secondPlace = document.querySelector("secondplace");
-const thirdPlace = document.querySelector("thirdplace");
 const startButton = document.getElementById("start");
 const startPage = document.getElementById("startpageid");
 const gamePage = document.getElementById("gameboardid");
+
+// Scoreboard elements
+const firstPlace = document.querySelector(".firstplace");
+const secondPlace = document.querySelector(".secondplace");
+const thirdPlace = document.querySelector(".thirdplace");
+
 // Instructions elements
 const howToButton = document.getElementById("howto");
 const returnButton = document.querySelector(".returntomain");
@@ -140,7 +143,7 @@ const betActions = () => {
       calcValue();
     }
   }
-  console.log(gamestate);
+  // console.log(gamestate);
 };
 const hitActions = () => {
   let activeplayer = gamestate.turn;
@@ -186,7 +189,8 @@ const dealerActions = () => {
   }
   dealerRender();
   settlement();
-  console.log(game);
+  leaderboard();
+  rankingRender();
 };
 
 /* Settlement Function */
@@ -206,6 +210,7 @@ const settlement = () => {
     } else game[i].money -= game[i].betamount;
   }
   render();
+  leaderboard();
 };
 
 /* Render Functions */
@@ -251,7 +256,11 @@ const dealerRender = () => {
   }
 };
 
-const rankingRender = () => {};
+const rankingRender = () => {
+  firstPlace.textContent = `1st: ${gamestate.ranking[0]}`;
+  secondPlace.textContent = `2nd: ${gamestate.ranking[1]}`;
+  thirdPlace.textContent = `3rd ${gamestate.ranking[2]}`;
+};
 
 const resetRender = () => {
   for (let i = 0; i < game.length - 1; i++) {
@@ -333,6 +342,7 @@ const nextGame = () => {
   setTurn();
   resetRender();
   renderMsg();
+  resetleaderboard();
   betAmount.disabled = false;
   betButtonElement.disabled = false;
   hitButtonElement.disabled = true;
@@ -343,7 +353,10 @@ const nextGame = () => {
 };
 
 /* Leaderboard functions */
-const leaderBoard = () => {
+const leaderboard = () => {
+  for (let i = 0; i < game.length - 1; i++) {
+    gamestate.leaderboard.push(game[i].money);
+  }
   for (let i = 0; i < gamestate.leaderboard.length; i++) {
     let sortPlayerIndex = gamestate.leaderboard.indexOf(
       Math.max(...gamestate.leaderboard)
@@ -356,11 +369,10 @@ const leaderBoard = () => {
   }
 };
 
-const gameEnd = () => {};
-
-// Put all monies in an array
-// [1,2,3,4,5]
-// index of the max value = winner!
+const resetleaderboard = () => {
+  gamestate.leaderboard.length = 0;
+  gamestate.ranking.length = 0;
+};
 
 //---------------------------- Event Listeners ----------------------------//
 
