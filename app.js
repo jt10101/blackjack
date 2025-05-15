@@ -16,7 +16,7 @@ const game = [
     state: "active",
     cards: [],
     cardvalue: 0,
-    money: 120,
+    money: 100,
     betamount: 0,
   }, // Player 2 properties
   {
@@ -24,7 +24,7 @@ const game = [
     state: "active",
     cards: [],
     cardvalue: 0,
-    money: 110,
+    money: 100,
     betamount: 0,
   }, // Player 3 properties
   { state: "dealer", cards: [], cardvalue: 0 }, // Dealer properties
@@ -34,7 +34,7 @@ const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "Player 1 Turn!",
   round: 1,
-  totalround: 1,
+  totalround: 3,
   leaderboard: [],
   ranking: [],
 };
@@ -114,16 +114,6 @@ const setTurn = () => {
   const findFirstactive = game.findIndex((player) => player.state === "active");
   gamestate.turn = findFirstactive;
 };
-
-// const setPlayerState = () => {
-//   for (let i = 0; i < game.length - 1; i++) {
-//     if (game[i].money >= 0) {
-//       game[i].state = "Active";
-//     } else {
-//       game[i].state = "Inactive";
-//     }
-//   }
-// };
 
 /* Player Action Functions */
 const betActions = () => {
@@ -303,6 +293,10 @@ const resetRender = () => {
     let x = document.getElementById(`d-${i}`);
     x.textContent = "";
     x.setAttribute("class", "cardempty");
+  }
+  for (let i = 0; i < game.length - 1; i++) {
+    let x = document.getElementById(`bet-${i + 1}`);
+    x.textContent = `Bet Amount:`;
   }
   gamestate.message = "Player 1 Turn!";
 };
