@@ -46,7 +46,7 @@ const hitButtonElement = document.getElementById("hit");
 const standButtonElement = document.getElementById("stand");
 const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
-const gameMessage = document.querySelector("p"); // game message field
+const gameMessage = document.getElementById("gamemessage"); // game message field
 const nextButton = document.getElementById("nextgame");
 const roundText = document.getElementById("roundnumber");
 const firstPlace = document.querySelector("firstplace");
@@ -105,15 +105,15 @@ const setTurn = () => {
   gamestate.turn = findFirstactive;
 };
 
-const setPlayerState = () => {
-  for (let i = 0; i < game.length - 1; i++) {
-    if (game[i].money >= 0) {
-      game[i].state = "Active";
-    } else {
-      game[i].state = "Inactive";
-    }
-  }
-};
+// const setPlayerState = () => {
+//   for (let i = 0; i < game.length - 1; i++) {
+//     if (game[i].money >= 0) {
+//       game[i].state = "Active";
+//     } else {
+//       game[i].state = "Inactive";
+//     }
+//   }
+// };
 
 /* Player Action Functions */
 const betActions = () => {
@@ -136,6 +136,7 @@ const betActions = () => {
       calcValue();
     }
   }
+  console.log(gamestate);
 };
 const hitActions = () => {
   let activeplayer = gamestate.turn;
@@ -160,6 +161,7 @@ const standActions = () => {
     hitButtonElement.disabled = true;
     standButtonElement.disabled = true;
     gamestate.message = `Player ${gamestate.turn + 1} Turn!`;
+    renderMsg();
   } else {
     hitButtonElement.disabled = true;
     standButtonElement.disabled = true;
@@ -167,6 +169,7 @@ const standActions = () => {
     dealerActions();
     nextButton.disabled = false;
   }
+  console.log(gamestate);
   renderMsg();
 };
 
