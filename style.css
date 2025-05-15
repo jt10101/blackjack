@@ -246,3 +246,12 @@ ol {
   align-items: center;
   color: whitesmoke;
 }
+
+/* Summary Page */
+.summarypage {
+  background-color: #36654d;
+  font-family: "rosarivo";
+  height: 670px;
+  width: 1000px;
+  border: solid;
+}

@@ -34,7 +34,7 @@ const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "Player 1 Turn!",
   round: 1,
-  totalround: 5,
+  totalround: 1,
   leaderboard: [],
   ranking: [],
 };
@@ -66,6 +66,9 @@ const thirdPlace = document.querySelector(".thirdplace");
 const howToButton = document.getElementById("howto");
 const returnButton = document.querySelector(".returntomain");
 const howToPage = document.querySelector(".howtopage");
+
+// Game Summary Page
+const summaryPage = document.getElementById("summarypage");
 
 //---------------------------- Sub Functions ----------------------------//
 /* Start game */
@@ -191,6 +194,9 @@ const dealerActions = () => {
   settlement();
   leaderboard();
   rankingRender();
+  if (gamestate.round === gamestate.totalround) {
+    summary();
+  }
 };
 
 /* Settlement Function */
@@ -372,6 +378,14 @@ const leaderboard = () => {
 const resetleaderboard = () => {
   gamestate.leaderboard.length = 0;
   gamestate.ranking.length = 0;
+};
+
+/* Summary Page */
+const summary = () => {
+  setTimeout(() => {
+    summaryPage.hidden = false;
+    gamePage.hidden = true;
+  }, 3000);
 };
 
 //---------------------------- Event Listeners ----------------------------//
