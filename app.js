@@ -257,9 +257,9 @@ const dealerRender = () => {
 };
 
 const rankingRender = () => {
-  firstPlace.textContent = `1st: ${gamestate.ranking[0]}`;
-  secondPlace.textContent = `2nd: ${gamestate.ranking[1]}`;
-  thirdPlace.textContent = `3rd ${gamestate.ranking[2]}`;
+  firstPlace.textContent = `#1 ${gamestate.ranking[0]}`;
+  secondPlace.textContent = `#2 ${gamestate.ranking[1]}`;
+  thirdPlace.textContent = `#3 ${gamestate.ranking[2]}`;
 };
 
 const resetRender = () => {
