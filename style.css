@@ -177,6 +177,24 @@ body {
   align-items: center;
 }
 
+.roundresults-lose {
+  height: 90px;
+  width: 520px;
+  text-align: center;
+  font-size: 60px;
+  background-color: red;
+  opacity: 0.6;
+}
+
+.roundresults-win {
+  height: 90px;
+  width: 520px;
+  text-align: center;
+  font-size: 60px;
+  background-color: green;
+  opacity: 0.6;
+}
+
 .gameover {
   width: 100%;
   height: 60%;
