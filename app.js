@@ -209,9 +209,9 @@ const settlement = () => {
         game[game.length - 1].cardvalue > 21)
     ) {
       game[i].money += game[i].betamount;
-      game[i].conclusion = "WIN";
+      game[i].conclusion = `WIN +`;
     } else {
-      game[i].conclusion = "LOSE";
+      game[i].conclusion = `LOSE -`;
       game[i].money -= game[i].betamount;
     }
   }
@@ -254,10 +254,10 @@ const renderMsg = () => {
 const renderRoundDetails = () => {
   for (let i = 0; i < game.length - 1; i++) {
     let x = document.getElementById(`wl-${i + 1}`);
-    x.textContent = game[i].conclusion;
-    if (game[i].conclusion === "WIN") {
+    x.textContent = `${game[i].conclusion} $${game[i].betamount}`;
+    if (game[i].conclusion === "WIN +") {
       x.setAttribute("class", "winmessage");
-    } else if (game[i].conclusion === "LOSE") {
+    } else if (game[i].conclusion === "LOSE -") {
       x.setAttribute("class", "losemessage");
     } else x.setAttribute("class", "drawmesage");
   }
@@ -319,6 +319,10 @@ const resetRender = () => {
   for (let i = 0; i < game.length - 1; i++) {
     let x = document.getElementById(`bet-${i + 1}`);
     x.textContent = `Bet Amount:`;
+  }
+  for (let i = 0; i < game.length - 1; i++) {
+    let x = document.getElementById(`wl-${i + 1}`);
+    x.textContent = "";
   }
   gamestate.message = "Player 1 Turn!";
 };
