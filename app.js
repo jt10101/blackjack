@@ -73,11 +73,16 @@ const howToPage = document.querySelector(".howtopage");
 // Game Summary Page
 const summaryPage = document.getElementById("summarypage");
 
+// Sounds
+const shuffleSound = document.getElementById("shufflesound");
+
 //---------------------------- Sub Functions ----------------------------//
 /* Start game */
 const startGame = () => {
   startPage.hidden = true;
   gamePage.hidden = false;
+  shuffleSound.play();
+  shuffleSound.playbackRate = 1.5;
 };
 
 const howTo = () => {
@@ -97,7 +102,6 @@ const shuffle = () => {
     array.sort(() => Math.random() - 0.5);
   }
   shuffle(deck);
-  // console.log(game.sort((x, y) => game.money - game.money));
 };
 
 const dealcards = () => {
@@ -374,6 +378,8 @@ const nextGame = () => {
   hitButtonElement.disabled = true;
   standButtonElement.disabled = true;
   nextButton.disabled = true;
+  shuffleSound.play();
+  shuffleSound.playbackRate = 1.5;
 
   dealcards();
 };
