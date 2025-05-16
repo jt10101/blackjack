@@ -10,6 +10,7 @@ const game = [
     cardvalue: 0,
     money: 100,
     betamount: 0,
+    conclusion: "",
   }, // Player 1 properties
   {
     playerID: 2,
@@ -18,6 +19,7 @@ const game = [
     cardvalue: 0,
     money: 100,
     betamount: 0,
+    conclusion: "",
   }, // Player 2 properties
   {
     playerID: 3,
@@ -26,6 +28,7 @@ const game = [
     cardvalue: 0,
     money: 100,
     betamount: 0,
+    conclusion: "",
   }, // Player 3 properties
   { state: "dealer", cards: [], cardvalue: 0 }, // Dealer properties
 ];
@@ -94,7 +97,7 @@ const shuffle = () => {
     array.sort(() => Math.random() - 0.5);
   }
   shuffle(deck);
-  console.log(game.sort((x, y) => game.money - game.money));
+  // console.log(game.sort((x, y) => game.money - game.money));
 };
 
 const dealcards = () => {
@@ -170,6 +173,7 @@ const standActions = () => {
     nextButton.disabled = false;
   }
   console.log(gamestate);
+  console.log(game);
   renderMsg();
 };
 
@@ -196,6 +200,7 @@ const settlement = () => {
       game[i].cardvalue === game[game.length - 1].cardvalue ||
       (game[i].cardvalue > 21 && game[game.length - 1].cardvalue > 21)
     ) {
+      game[i].conclusion = "DRAW";
     } else if (
       (game[i].cardvalue > game[game.length - 1].cardvalue &&
         game[i].cardvalue <= 21) ||
@@ -203,7 +208,11 @@ const settlement = () => {
         game[game.length - 1].cardvalue > 21)
     ) {
       game[i].money += game[i].betamount;
-    } else game[i].money -= game[i].betamount;
+      game[i].conclusion = "WIN";
+    } else {
+      game[i].conclusion = "LOSE";
+      game[i].money -= game[i].betamount;
+    }
   }
   render();
   leaderboard();
