@@ -76,10 +76,24 @@ body {
   align-content: center;
 }
 
-.moneyvalue {
+.moneyholder {
+  display: flex;
+  justify-content: space-between;
   height: 20%;
   align-content: center;
   /* background-color: white; */
+}
+
+.winmessage {
+  color: greenyellow;
+}
+
+.losemessage {
+  color: red;
+}
+
+.drawmessage {
+  color: whitesmoke;
 }
 
 .betAmount {

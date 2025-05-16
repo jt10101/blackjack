@@ -24,7 +24,7 @@
   </head>
   <body>
     <!-- Start Page -->
-    <section class="startpage" id="startpageid">
+    <section class="startpage" id="startpageid" hidden>
       <!-- <div id="welcomelogo"><img src= "https://i.imgur.com/GxML8GP.png" alt = "GAME LOGO GOES HERE" /></div> -->
       <div>
         <button class="startbutton" id="start">START GAME</button>
@@ -50,9 +50,9 @@
  <section class ="summarypage" id="summarypage" hidden>Summary Page</section>
 
     <!-- Actual game board -->
-    <section class="gameboard" id="gameboardid" hidden>
+    <section class="gameboard" id="gameboardid">
       <div class="gameheader">
-        <div id="logo">BLACKJACK21!</div>
+        <div id="logo">BLACKJACK21</div>
         <div id="roundnumber">Round 1 of 5</div>
       </div>
       <div class="gap">X</div>
@@ -64,18 +64,27 @@
           </div>
           <div class="detail">
             <div class="playerID">Player 1</div>
-            <div class="moneyvalue" id="m-1">$100</div>
+            <div class="moneyholder" id="money-1">
+              <div class="moneyvalue" id="m-1">$100</div>
+              <div class="drawmessage" id="wl-1"></div>
+            </div>
             <div class="betAmount" id="bet-1">Bet Amount: </div>
           </div>
 
           <div class="detail">
             <div class="playerID">Player 2</div>
-            <div class="moneyvalue" id="m-2">$100</div>
+            <div class="moneyholder" id="money-2">
+              <div class="moneyvalue" id="m-2">$100</div>
+              <div class="drawmessage" id="wl-2"></div>
+            </div>
             <div class="betAmount" id="bet-2">Bet Amount: </div>
           </div>
           <div class="detail">
             <div class="playerID">Player 3</div>
-            <div class="moneyvalue" id="m-3">$100</div>
+            <div class="moneyholder" id="money-3">
+              <div class="moneyvalue" id="m-3">$100</div>
+              <div class="drawmessage" id="wl-3"></div>
+            </div>
             <div class="betAmount" id="bet-3">Bet Amount: </div>
           </div>
         </div>

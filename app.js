@@ -188,6 +188,7 @@ const dealerActions = () => {
   settlement();
   leaderboard();
   rankingRender();
+  renderRoundDetails();
   if (gamestate.round === gamestate.totalround) {
     summary();
   }
@@ -248,6 +249,18 @@ const render = () => {
 const renderMsg = () => {
   gameMessage.textContent = gamestate.message;
   roundText.textContent = `Round ${gamestate.round} of ${gamestate.totalround}`;
+};
+
+const renderRoundDetails = () => {
+  for (let i = 0; i < game.length - 1; i++) {
+    let x = document.getElementById(`wl-${i + 1}`);
+    x.textContent = game[i].conclusion;
+    if (game[i].conclusion === "WIN") {
+      x.setAttribute("class", "winmessage");
+    } else if (game[i].conclusion === "LOSE") {
+      x.setAttribute("class", "losemessage");
+    } else x.setAttribute("class", "drawmesage");
+  }
 };
 
 const dealerRender = () => {
