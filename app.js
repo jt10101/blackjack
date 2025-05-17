@@ -1,4 +1,4 @@
-import { gameCardsDetails } from "./carddeck";
+import { gameCardsDetails } from "./carddeck.js";
 
 //---------------------------- Constants ----------------------------//
 
