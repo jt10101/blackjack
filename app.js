@@ -182,11 +182,17 @@ const standActions = () => {
 };
 
 /* Dealer Actions */
+const dealerDecision = () => Math.floor(Math.random() * 2); // function returns a binary 0 or 1
+
 const dealerActions = () => {
   while (game[game.length - 1].cardvalue <= 15) {
-    game[game.length - 1].cards.push(deck[0]);
-    deck.splice(0, 1);
-    dealerValue();
+    let x = dealerDecision();
+    if (x === 1) {
+      game[game.length - 1].cards.push(deck[0]);
+      deck.splice(0, 1);
+      dealerValue();
+      console.log(x);
+    }
   }
   dealerRender();
   settlement();
