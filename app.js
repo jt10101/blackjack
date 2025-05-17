@@ -182,18 +182,26 @@ const standActions = () => {
 };
 
 /* Dealer Actions */
-const dealerDecision = () => Math.floor(Math.random() * 2); // function returns a binary 0 or 1
+const dealerDecision = () => Math.floor(Math.random() * 5); // function returns value between 0 and 4
 
 const dealerActions = () => {
-  while (game[game.length - 1].cardvalue <= 15) {
+  while (game[game.length - 1].cardvalue < 16) {
+    // dealer definitely draws a card when hand value is below 16
+    game[game.length - 1].cards.push(deck[0]);
+    deck.splice(0, 1);
+    dealerValue();
+  }
+  if (game[game.length - 1].cardvalue < 21) {
     let x = dealerDecision();
-    if (x === 1) {
+    if (x <= 1) {
+      // 40% chance for dealer to draw a card when they have a hand value between 15 and 21
       game[game.length - 1].cards.push(deck[0]);
       deck.splice(0, 1);
       dealerValue();
       console.log(x);
     }
   }
+
   dealerRender();
   settlement();
   leaderboard();
