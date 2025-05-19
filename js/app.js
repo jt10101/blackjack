@@ -1,5 +1,7 @@
 import { gameCardsDetails } from "./carddeck.js";
 
+//---------------------------- Constants ----------------------------//
+
 const game = [
   {
     playerID: 1,
