@@ -25,17 +25,18 @@ body {
 .gameheader {
   display: flex;
   justify-content: space-between;
+  margin: 15 23 0 25;
   color: #dda74f;
   height: 50px;
   font-size: 30px;
 }
 #logo {
-  margin: 15 0 0 25;
-  text-shadow: 1px 1px 2px goldenrod;
+  /* margin: 15 0 0 25; */
+  text-shadow: 2px 1px 2px black;
 }
 #roundnumber {
-  margin: 15 23 0 0;
-  text-shadow: 1px 1px 2px goldenrod;
+  /* margin: 15 23 0 0; */
+  text-shadow: 2px 1px 2px black;
 }
 
 /* Play Area */
