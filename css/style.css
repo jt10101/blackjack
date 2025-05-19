@@ -12,7 +12,7 @@ body {
   margin: auto;
   height: 680px;
   width: 1000px;
-  border: solid 5px #7e4029;
+  border: solid 2px #7e4029;
   border-radius: 40px;
 }
 
@@ -229,7 +229,7 @@ body {
   margin: auto;
   height: 680px;
   width: 1000px;
-  border: solid 5px #7e4029;
+  border: solid 2px #7e4029;
   border-radius: 40px;
 
   justify-content: center;
@@ -268,7 +268,7 @@ img {
   margin: auto;
   height: 680px;
   width: 1000px;
-  border: solid 5px #7e4029;
+  border: solid 2px #7e4029;
   border-radius: 40px;
 }
 
