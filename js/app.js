@@ -96,7 +96,7 @@ const gamestate = {
   ranking: [],
 };
 
-const initialDeck = Array.from({ length: 52 }, (_, i) => i); // I took this code from somewhere, will find source in abit
+const initialDeck = Array.from({ length: 52 }, (_, i) => i); // referenced W3schools
 
 //---------------------------- Variables ----------------------------//
 let deck = [...initialDeck];
@@ -123,9 +123,6 @@ const thirdPlace = document.querySelector(".thirdplace");
 const howToButton = document.getElementById("howto");
 const returnButton = document.querySelector(".returntomain");
 const howToPage = document.querySelector(".howtopage");
-
-// // Game Summary Page
-// const summaryPage = document.getElementById("summarypage");
 
 // Sounds
 const shuffleSound = document.getElementById("shufflesound");
@@ -255,7 +252,8 @@ const dealerActions = () => {
     dealerRender();
     settlement();
     rankingRender();
-    renderRoundDetails();
+    // renderRoundDetails(); // might not need this, testing
+    // resetleaderboard(); // testing if i need this
     end();
   } else {
     dealerRender();
@@ -481,6 +479,21 @@ const end = () => {
   betButtonElement.disabled = true;
   hitButtonElement.disabled = true;
   standButtonElement.disabled = true;
+  resetleaderboard();
+  for (let i = 0; i < game.length - 1; i++) {
+    gamestate.leaderboard.push(game[i].money);
+  }
+  let winnerIndex = gamestate.leaderboard.indexOf(
+    Math.max(...gamestate.leaderboard)
+  );
+  let winnerMessage = document.getElementById(`p${winnerIndex + 1}-cards`);
+  winnerMessage.setAttribute("class", "winner");
+  winnerMessage.textContent = "WINNER!";
+  for (let i = 0; i < game[winnerIndex].cards; i++) {
+    let winnerCard = document.getElementById(`${winnerIndex + 1}-${i + 1}`);
+    winnerCard.setAttribute("class", "cardempty");
+    winnerCard.textContent = "";
+  }
 };
 
 //---------------------------- Event Listeners ----------------------------//
