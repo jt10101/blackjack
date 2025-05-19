@@ -24,25 +24,19 @@ body {
 .gameheader {
   display: flex;
   justify-content: space-between;
-  /* background-color: #181b22; */
   color: #dda74f;
   height: 50px;
   font-size: 30px;
   align-content: center;
   text-align: center;
-
-  /* border for viz */
-  /* border-style: solid; */
 }
 
 #logo {
-  display: flex;
   margin: 15 0 0 25;
   text-shadow: 1px 1px 2px goldenrod;
 }
 
 #roundnumber {
-  display: flex;
   margin: 15 23 0 0;
   text-shadow: 1px 1px 2px goldenrod;
 }
@@ -272,7 +266,6 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: #36654d; */
   background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
 
   font-family: "rosarivo";
