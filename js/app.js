@@ -54,11 +54,12 @@ const standButtonElement = document.getElementById("stand");
 const betButtonElement = document.getElementById("bet");
 const betAmount = document.getElementById("bet-amount"); // text input field for bet
 const gameMessage = document.getElementById("gamemessage"); // game message field
-const nextButton = document.getElementById("nextgame");
 const roundText = document.getElementById("roundnumber");
 const startButton = document.getElementById("start");
 const startPage = document.getElementById("startpageid");
 const gamePage = document.getElementById("gameboardid");
+const nextButton = document.getElementById("nextgame");
+const resetButton = document.getElementById("resetgame");
 
 // Scoreboard elements
 const firstPlace = document.querySelector(".firstplace");
@@ -439,6 +440,8 @@ const end = () => {
   betButtonElement.disabled = true;
   hitButtonElement.disabled = true;
   standButtonElement.disabled = true;
+  nextButton.style.display = "none";
+  resetButton.style.display = "block";
   resetleaderboard();
   for (let i = 0; i < game.length - 1; i++) {
     gamestate.leaderboard.push(game[i].money);
@@ -446,14 +449,88 @@ const end = () => {
   let winnerIndex = gamestate.leaderboard.indexOf(
     Math.max(...gamestate.leaderboard)
   );
-  let winnerMessage = document.getElementById(`p${winnerIndex + 1}-cards`);
+  let winnerMessage = document.getElementById(`${winnerIndex + 1}-1`);
   winnerMessage.setAttribute("class", "winner");
   winnerMessage.textContent = "WINNER!";
-  for (let i = 0; i < game[winnerIndex].cards; i++) {
+  for (let i = 1; i < game[winnerIndex].cards; i++) {
     let winnerCard = document.getElementById(`${winnerIndex + 1}-${i + 1}`);
     winnerCard.setAttribute("class", "cardempty");
     winnerCard.textContent = "";
   }
+};
+
+/* Reset Game*/
+const resetGame = () => {
+  for (let i = 0; i < game.length - 1; i++) {
+    game[i].state = "active";
+    game[i].cards.length = 0;
+    game[i].cardvalue = 0;
+    game[i].money = 100;
+    game[i].betamount = 0;
+    game[i].conclusion = "";
+
+    // render Bet Amounts back to 0
+    const playerBet = document.getElementById(`bet-${i + 1}`);
+    playerBet.textContent = `Bet: $ ${game[i].betamount}`;
+
+    //render money balance
+    let playerMoney = document.getElementById(`m-${i + 1}`);
+    playerMoney.textContent = `$${game[i].money}`;
+
+    //render cards back to start state for player
+    for (let j = 1; j < 3; j++) {
+      let x = document.getElementById(`${i + 1}-${j}`);
+      x.textContent = "";
+      x.setAttribute("class", "cardback");
+    }
+    for (let j = 3; j < 6; j++) {
+      let x = document.getElementById(`${i + 1}-${j}`);
+      x.textContent = "";
+      x.setAttribute("class", "cardempty");
+    }
+  }
+  game[game.length - 1].state = "dealer";
+  game[game.length - 1].cards.length = 0;
+  game[game.length - 1].cardvalue = 0;
+
+  for (let j = 1; j < 3; j++) {
+    let x = document.getElementById(`d-${j}`);
+    x.textContent = "";
+    x.setAttribute("class", "cardback");
+  }
+  for (let j = 3; j < 6; j++) {
+    let x = document.getElementById(`d-${j}`);
+    x.textContent = "";
+    x.setAttribute("class", "cardempty");
+  }
+
+  gamestate.turn = 0;
+  gamestate.message = "Player 1 Turn!";
+  gamestate.round = 1;
+  gamestate.totalround = 3;
+  gamestate.leaderboard.length = 0;
+  gamestate.ranking.length = 0;
+
+  firstPlace.textContent = "1#";
+  secondPlace.textContent = "2#";
+  thirdPlace.textContent = "#3";
+
+  renderMsg();
+
+  resetButton.style.display = "none";
+  nextButton.style.display = "block";
+
+  betAmount.disabled = false;
+  betButtonElement.disabled = false;
+  hitButtonElement.disabled = true;
+  standButtonElement.disabled = true;
+  nextButton.disabled = true;
+  shuffleSound.play();
+  shuffleSound.playbackRate = 2;
+
+  deck = [...initialDeck];
+  shuffle();
+  dealcards();
 };
 
 // Audio Function
@@ -480,11 +557,11 @@ howToButton.addEventListener("click", howTo);
 returnButton.addEventListener("click", returnMain);
 volOn.addEventListener("click", volumeOn);
 volMute.addEventListener("click", volumeMute);
+resetButton.addEventListener("click", resetGame);
 
 //---------------------------- Main Function ----------------------------//
 
 const init = () => {
-  // setPlayerState();
   setTurn();
   shuffle();
   dealcards();

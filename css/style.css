@@ -149,12 +149,18 @@ body {
   border-radius: 15px;
 }
 
-#nextgame {
+#nextgame,
+#resetgame {
+  display: block;
   margin: 25 0 0 0;
   height: 40px;
   width: 170px;
   font-family: "rosarivo";
   border-radius: 15px;
+}
+
+#resetgame {
+  display: none;
 }
 
 .cardface {
