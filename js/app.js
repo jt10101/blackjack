@@ -185,23 +185,26 @@ const setTurn = () => {
 /* Player Action Functions */
 const betActions = () => {
   let activeplayer = gamestate.turn;
-  if ((game[activeplayer].state = "active")) {
-    if (betAmount.value <= 0 || betAmount.value > game[activeplayer].money) {
-      gamestate.message = "Not enough money";
-      renderMsg();
-      return;
-    } else {
-      game[activeplayer].betamount = Number(betAmount.value);
-      // disables betting functions + enables HIT and stand buttons
-      betAmount.disabled = true;
-      betButtonElement.disabled = true;
-      hitButtonElement.disabled = false;
-      standButtonElement.disabled = false;
-      // once a bet is locked in, we will display the first two cards + calculate the current hand value
-      render();
-      renderMsg();
-      calcValue();
-    }
+
+  if (
+    betAmount.value <= 0 ||
+    betAmount.value > game[activeplayer].money ||
+    isNaN(betAmount.value)
+  ) {
+    gamestate.message = "Invalid Bet";
+    renderMsg();
+    return;
+  } else {
+    game[activeplayer].betamount = Number(betAmount.value);
+    // disables betting functions + enables HIT and stand buttons
+    betAmount.disabled = true;
+    betButtonElement.disabled = true;
+    hitButtonElement.disabled = false;
+    standButtonElement.disabled = false;
+    // once a bet is locked in, we will display the first two cards + calculate the current hand value
+    render();
+    renderMsg();
+    calcValue();
   }
 };
 const hitActions = () => {
@@ -406,7 +409,7 @@ const resetRender = () => {
     let x = document.getElementById(`wl-${i + 1}`);
     x.textContent = "";
   }
-  gamestate.message = "Player 1 Turn!";
+  gamestate.message = `Player ${gamestate.turn + 1} Turn!`;
 };
 
 /* Calculate Value of hand */
