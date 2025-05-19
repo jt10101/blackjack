@@ -1,7 +1,9 @@
 body {
+  display: flex;
+  margin: auto;
   background-color: gray;
   font-family: sans-serif;
-  /* margin: 0; */
+  margin: 10 0 0 0;
 }
 
 /* Game board CSS */

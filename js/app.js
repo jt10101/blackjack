@@ -446,7 +446,6 @@ const nextGame = () => {
   nextButton.disabled = true;
   shuffleSound.play();
   shuffleSound.playbackRate = 1.5;
-
   dealcards();
 };
 
