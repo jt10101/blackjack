@@ -37,7 +37,7 @@ const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "Player 1 Turn!",
   round: 1,
-  totalround: 1,
+  totalround: 3,
   leaderboard: [],
   ranking: [],
 };
@@ -170,7 +170,10 @@ const hitActions = () => {
 const standActions = () => {
   let activeplayer = gamestate.turn;
   game[activeplayer].state = "over";
-  if (gamestate.turn < game.length - 2) {
+  if (
+    gamestate.turn < game.length - 2 &&
+    game[activeplayer + 1].state === "active"
+  ) {
     setTurn();
     betAmount.disabled = false;
     betButtonElement.disabled = false;
