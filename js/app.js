@@ -143,7 +143,7 @@ const howTo = () => {
 
 const returnMain = () => {
   startPage.style.display = "flex";
-  howTo.style.display = "none";
+  howToPage.style.display = "none";
 };
 
 /* Init Functions */

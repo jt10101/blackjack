@@ -17,9 +17,22 @@ This game was developed with these user stories in mind:
 - User must be able to see scoreboard at any given point of time
 - At the end of game, user must know which player won the game
 
-## Wireframe design
+### Wireframe design
 
 ![alt text](images/wireframe.png)
+
+### Screengrabs of game
+
+1. Start Page
+   ![alt text](images/startpage.png)
+
+2. How To Play Page
+   ![alt text](images/howtopage.png)
+
+3. Game
+   ![alt text](images/game1.png)
+   ![alt text](images/game2.png)
+   ![alt text](images/game3.png)
 
 ## Technologies Used
 
