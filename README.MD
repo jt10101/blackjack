@@ -39,3 +39,10 @@ This game was developed with these user stories in mind:
 - HTML
 - CSS
 - Bootstrap JS
+
+## Planned future stretchgoals
+
+- Better UI elements for player details
+- Interactive flip display for cards
+- Introduction of chips for gambling mechanic
+- User defined rounds
