@@ -306,7 +306,7 @@ const render = () => {
   }
   //render bet amount
   const playerBet = document.getElementById(`bet-${gamestate.turn + 1}`);
-  playerBet.textContent = `Bet Amount: $ ${game[activeplayer].betamount}`;
+  playerBet.textContent = `Bet: $ ${game[activeplayer].betamount}`;
 
   //render money balance
   for (let i = 0; i < game.length - 1; i++) {
@@ -390,7 +390,7 @@ const resetRender = () => {
   }
   for (let i = 0; i < game.length - 1; i++) {
     let x = document.getElementById(`bet-${i + 1}`);
-    x.textContent = `Bet Amount:`;
+    x.textContent = `Bet:`;
   }
   for (let i = 0; i < game.length - 1; i++) {
     let x = document.getElementById(`wl-${i + 1}`);

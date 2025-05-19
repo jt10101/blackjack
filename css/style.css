@@ -9,7 +9,8 @@ body {
   display: flex;
   /* display: none; */
   flex-direction: column;
-  background-color: #36654d;
+  /* background-color: #36654d; */
+  background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
   /* font master for whole game board */
   font-family: "rosarivo";
   margin: auto;
@@ -31,43 +32,38 @@ body {
   /* border-style: solid; */
 }
 
-.gap {
-  height: 20px;
-  background-color: #36654d;
-  color: #36654d;
+#logo {
+  display: flex;
+  margin: 5 0 0 12;
+  text-shadow: 2px 1px 2px goldenrod;
+}
+
+#roundnumber {
+  display: flex;
+  margin: 5 12 0 0;
+  text-shadow: 2px 1px 2px goldenrod;
 }
 
 .playarea {
   display: flex;
   flex-direction: row;
-  background-color: #36654d;
   color: #505050;
   height: 600px;
   color: white;
-  /* border for viz */
-  /* border-style: solid; */
-}
-
-.playareadivider {
-  width: 15px;
-  color: #36654d;
+  margin: 20 0 0 0;
 }
 
 .playerdetails {
   display: flex;
   flex-direction: column;
   width: 20%;
-  /* border for viz */
-  /* border-style: solid; */
+  margin: 0 0 0 15;
 }
 
 .detail {
   display: flex;
   flex-direction: column;
   height: 150px;
-  /* background-color: lightcoral; */
-  /* border for viz */
-  /* border-style: solid; */
 }
 
 .playerID {
@@ -172,20 +168,14 @@ body {
   height: 90px; /* Adjust as needed */
   background-color: #333; /* A dark background color */
   border-radius: 5px;
+  border-style: solid;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #eee; /* Light text color */
-  font-size: 1.5em;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 /* we use this card class to put in an empty card */
 .cardempty {
   width: 60px;
   height: 90px;
-  background-color: #36654d;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -228,7 +218,9 @@ body {
 
 /* start page CSS  */
 .startpage {
-  background-color: #36654d;
+  /* background-color: #36654d; */
+  background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
+
   font-family: "rosarivo";
   margin: auto;
   height: 680px;
@@ -267,7 +259,9 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #36654d;
+  /* background-color: #36654d; */
+  background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
+
   font-family: "rosarivo";
   margin: auto;
   height: 680px;
@@ -289,7 +283,7 @@ ol {
 
 /* Summary Page */
 .summarypage {
-  background-color: #36654d;
+  background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
   margin: auto;
   font-family: "rosarivo";
   margin: auto;
