@@ -1,18 +1,13 @@
 body {
-  display: flex;
-  margin: 5 auto;
   background-color: darkgray;
   font-family: sans-serif;
 }
 
 /* Game board CSS */
 .gameboard {
-  /* display: flex; */
   display: none;
   flex-direction: column;
-  /* background-color: #36654d; */
   background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
-  /* font master for whole game board */
   font-family: "rosarivo";
   margin: auto;
   height: 680px;
@@ -31,11 +26,9 @@ body {
   font-size: 30px;
 }
 #logo {
-  /* margin: 15 0 0 25; */
   text-shadow: 2px 1px 2px black;
 }
 #roundnumber {
-  /* margin: 15 23 0 0; */
   text-shadow: 2px 1px 2px black;
 }
 
@@ -43,28 +36,26 @@ body {
 .playarea {
   display: flex;
   flex-direction: row;
-  color: #505050;
   height: 600px;
-  color: white;
-  margin: 30 0 0 10;
+  color: whitesmoke;
+  margin: 10 0 0 0;
 }
 
 .playerdetails {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   width: 20%;
-  margin: 0 0 0 15;
+  margin: 0 0 0 25;
 }
 
 .detail {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   height: 150px;
 }
 
 .playerID {
   height: 20%;
-  /* background-color: green; */
   align-content: center;
 }
 
@@ -73,7 +64,6 @@ body {
   justify-content: space-between;
   height: 20%;
   align-content: center;
-  /* background-color: white; */
 }
 
 .winmessage {
@@ -91,7 +81,6 @@ body {
 .betAmount {
   height: 20%;
   align-content: center;
-  /* background-color: peru; */
 }
 
 .cardarea {
@@ -102,7 +91,6 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   height: 150px;
-  /* background-color: lightcyan; */
 }
 
 .scoreboard-active {
@@ -129,10 +117,14 @@ body {
 #bet-amount {
   height: 30px;
   width: 100px;
+  font-family: "rosarivo";
+  border-radius: 10px;
 }
 .submitbet {
   height: 35px;
   width: 50px;
+  font-family: "rosarivo";
+  border-radius: 10px;
 }
 
 .decision {
@@ -143,10 +135,22 @@ body {
 #hit {
   background-color: lightgreen;
   width: 80px;
+  font-family: "rosarivo";
+  border-radius: 30px;
 }
+
 #stand {
   background-color: lightcoral;
   width: 80px;
+  font-family: "rosarivo";
+  border-radius: 30px;
+}
+
+#nextgame {
+  margin: 60 0 0 0;
+  height: 40px;
+  font-family: "rosarivo";
+  border-radius: 30px;
 }
 
 .cardface {
@@ -250,17 +254,10 @@ img {
   justify-content: center;
   width: 200px;
   height: 80px;
-  /* margin: 100px; */
-}
-
-#nextgame {
-  margin: 60 0 0 0;
-  height: 40px;
 }
 
 /* How to page */
 .howtopage {
-  /* display: flex; */
   display: none;
   flex-direction: column;
   justify-content: center;
