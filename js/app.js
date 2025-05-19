@@ -37,7 +37,7 @@ const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "Player 1 Turn!",
   round: 1,
-  totalround: 1,
+  totalround: 3,
   leaderboard: [],
   ranking: [],
 };
@@ -184,7 +184,7 @@ const standActions = () => {
     gamestate.message = `Dealer's Turn!`;
     dealerActions();
   }
-
+  betAmount.value = "";
   renderMsg();
 };
 
