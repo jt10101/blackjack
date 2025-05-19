@@ -461,12 +461,12 @@ const leaderboard = () => {
   for (let i = 0; i < gamestate.leaderboard.length; i++) {
     let sortPlayerIndex = gamestate.leaderboard.indexOf(
       Math.max(...gamestate.leaderboard)
-    );
+    ); // finds the index  (i.e. player number) of the player with the highest money balance
     let sortPlayer = `Player ${sortPlayerIndex + 1} : $${Math.max(
       ...gamestate.leaderboard
-    )}`;
+    )}`; // sets player number + money to gamestate.leaderboard array
     gamestate.ranking.push(sortPlayer);
-    gamestate.leaderboard[sortPlayerIndex] = 0;
+    gamestate.leaderboard[sortPlayerIndex] = 0; // changes already sorted player's money to 0
   }
 };
 

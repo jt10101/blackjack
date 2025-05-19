@@ -19,30 +19,32 @@ body {
   height: 680px;
   width: 1000px;
   border: solid 5px #7e4029;
+  border-radius: 40px;
 }
 
 .gameheader {
   display: flex;
   justify-content: space-between;
-  background-color: #181b22;
+  /* background-color: #181b22; */
   color: #dda74f;
   height: 50px;
   font-size: 30px;
   align-content: center;
   text-align: center;
+
   /* border for viz */
   /* border-style: solid; */
 }
 
 #logo {
   display: flex;
-  margin: 5 0 0 12;
+  margin: 15 0 0 25;
   text-shadow: 1px 1px 2px goldenrod;
 }
 
 #roundnumber {
   display: flex;
-  margin: 5 12 0 0;
+  margin: 15 23 0 0;
   text-shadow: 1px 1px 2px goldenrod;
 }
 
@@ -52,7 +54,7 @@ body {
   color: #505050;
   height: 600px;
   color: white;
-  margin: 20 0 0 0;
+  margin: 30 0 0 10;
 }
 
 .playerdetails {
