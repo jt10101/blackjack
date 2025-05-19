@@ -20,7 +20,7 @@ body {
 .gameheader {
   display: flex;
   justify-content: space-between;
-  margin: 15 23 0 25;
+  margin: 15px 23px 0px 25px;
   color: #dda74f;
   height: 50px;
   font-size: 30px;
@@ -38,14 +38,14 @@ body {
   flex-direction: row;
   height: 600px;
   color: whitesmoke;
-  margin: 10 0 0 0;
+  margin: 10px 0px 0px 0px;
 }
 
 .playerdetails {
   /* display: flex; */
   flex-direction: column;
   width: 20%;
-  margin: 0 0 0 25;
+  margin: 0px 0px 0px 25px;
 }
 
 .detail {
@@ -152,7 +152,7 @@ body {
 #nextgame,
 #resetgame {
   display: block;
-  margin: 25 0 0 0;
+  margin: 25px 0px 0px 0px;
   height: 40px;
   width: 170px;
   font-family: "rosarivo";
@@ -252,7 +252,7 @@ img {
 #gamelogo {
   display: flex;
   align-items: center;
-  margin: 0 0 80 0;
+  margin: 0px 0px 80px 0px;
 }
 
 .startbutton,
@@ -260,7 +260,7 @@ img {
   justify-content: center;
   width: 200px;
   height: 30px;
-  margin: 5 0 5 0;
+  margin: 5px 0px 5px 0px;
 }
 
 /* How to page */
@@ -299,7 +299,7 @@ ol {
   text-shadow: 1px 1px 2px black;
   justify-content: left;
   font-size: 80;
-  margin: 0 0 0 40;
+  margin: 0px 0px 0px 40px;
 }
 
 /* Audio */
@@ -307,7 +307,7 @@ ol {
 #volumemute {
   width: 80px;
   height: auto;
-  margin: 160 0 0 100;
+  margin: 160px 0px 0px 100px;
 }
 
 #volumeon {
