@@ -283,13 +283,16 @@ ol {
   color: whitesmoke;
 }
 
-/* Summary Page */
-.summarypage {
-  background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
-  margin: auto;
-  font-family: "rosarivo";
-  margin: auto;
-  height: 680px;
-  width: 1000px;
-  border: solid 5px #7e4029;
+.winner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 150px;
+  /* background-color: white; */
+  color: goldenrod;
+  text-shadow: 1px 1px 2px black;
+  justify-content: center;
+  align-items: center;
+  font-size: 80;
+  margin: 0 10 0 50;
 }
