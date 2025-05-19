@@ -1,15 +1,14 @@
 body {
   display: flex;
-  margin: auto;
+  margin: 5 auto;
   background-color: gray;
   font-family: sans-serif;
-  margin: 10 0 0 0;
 }
 
 /* Game board CSS */
 .gameboard {
-  display: flex;
-  /* display: none; */
+  /* display: flex; */
+  display: none;
   flex-direction: column;
   /* background-color: #36654d; */
   background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
@@ -261,7 +260,8 @@ img {
 
 /* How to page */
 .howtopage {
-  display: flex;
+  /* display: flex; */
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;

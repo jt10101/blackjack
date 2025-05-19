@@ -130,20 +130,20 @@ const shuffleSound = document.getElementById("shufflesound");
 //---------------------------- Sub Functions ----------------------------//
 /* Start game */
 const startGame = () => {
-  startPage.hidden = true;
-  gamePage.hidden = false;
+  startPage.style.display = "none";
+  gamePage.style.display = "flex";
   shuffleSound.play();
   shuffleSound.playbackRate = 1.5;
 };
 
 const howTo = () => {
-  startPage.hidden = true;
-  howToPage.hidden = false;
+  startPage.style.display = "none";
+  howToPage.style.display = "flex";
 };
 
 const returnMain = () => {
-  howToPage.hidden = true;
-  startPage.hidden = false;
+  startPage.style.display = "flex";
+  howTo.style.display = "none";
 };
 
 /* Init Functions */
