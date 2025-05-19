@@ -197,7 +197,6 @@ const betActions = () => {
       calcValue();
     }
   }
-  // console.log(gamestate);
 };
 const hitActions = () => {
   let activeplayer = gamestate.turn;
@@ -230,8 +229,7 @@ const standActions = () => {
     dealerActions();
     nextButton.disabled = false;
   }
-  console.log(gamestate);
-  console.log(game);
+
   renderMsg();
 };
 
@@ -252,15 +250,15 @@ const dealerActions = () => {
       game[game.length - 1].cards.push(deck[0]);
       deck.splice(0, 1);
       dealerValue();
-      console.log(x);
     }
   }
 
   dealerRender();
   settlement();
-  leaderboard();
   rankingRender();
   renderRoundDetails();
+  console.log(game);
+  console.log(gamestate);
   if (gamestate.round === gamestate.totalround) {
     summary();
   }
@@ -475,12 +473,7 @@ const resetleaderboard = () => {
 };
 
 /* Summary Page */
-const summary = () => {
-  setTimeout(() => {
-    summaryPage.hidden = false;
-    gamePage.hidden = true;
-  }, 3000);
-};
+const summary = () => {};
 
 //---------------------------- Event Listeners ----------------------------//
 
