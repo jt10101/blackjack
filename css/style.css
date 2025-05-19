@@ -240,9 +240,16 @@ body {
   flex-direction: column;
 }
 
-#welcomelogo {
-  font-size: 40px;
-  margin: 100px;
+img {
+  height: auto;
+  width: 50%;
+  margin: auto;
+}
+
+#gamelogo {
+  display: flex;
+  align-items: center;
+  margin: 0 0 80 0;
 }
 
 #startbutton {
