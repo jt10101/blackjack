@@ -230,10 +230,10 @@ body {
 .startpage {
   background-color: #36654d;
   font-family: "rosarivo";
-
-  height: 670px;
+  margin: auto;
+  height: 680px;
   width: 1000px;
-  border: solid;
+  border: solid 5px #7e4029;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,9 +262,10 @@ body {
   align-items: center;
   background-color: #36654d;
   font-family: "rosarivo";
-  height: 670px;
+  margin: auto;
+  height: 680px;
   width: 1000px;
-  border: solid;
+  border: solid 5px #7e4029;
 }
 
 .returntomain {
@@ -282,8 +283,10 @@ ol {
 /* Summary Page */
 .summarypage {
   background-color: #36654d;
+  margin: auto;
   font-family: "rosarivo";
-  height: 670px;
+  margin: auto;
+  height: 680px;
   width: 1000px;
-  border: solid;
+  border: solid 5px #7e4029;
 }
