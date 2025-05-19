@@ -19,20 +19,19 @@ This game was developed with these user stories in mind:
 
 ### Wireframe design
 
-![alt text](images/wireframe.png)
+![Wireframe](images/wireframe.png)
 
 ### Screengrabs of game
 
 1. Start Page
-   ![alt text](images/startpage.png)
-
+   ![start page](images/startpage.png)
 2. How To Play Page
-   ![alt text](images/howtopage.png)
+   ![how to play](images/howtopage.png)
 
 3. Game
-   ![alt text](images/game1.png)
-   ![alt text](images/game2.png)
-   ![alt text](images/game3.png)
+   ![gameboard1](images/game1.png)
+   ![gameboard2](images/game2.png)
+   ![gameboard3](images/game3.png)
 
 ## Technologies Used
 
