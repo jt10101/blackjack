@@ -21,26 +21,24 @@ body {
   border-radius: 40px;
 }
 
+/* game header area */
 .gameheader {
   display: flex;
   justify-content: space-between;
   color: #dda74f;
   height: 50px;
   font-size: 30px;
-  align-content: center;
-  text-align: center;
 }
-
 #logo {
   margin: 15 0 0 25;
   text-shadow: 1px 1px 2px goldenrod;
 }
-
 #roundnumber {
   margin: 15 23 0 0;
   text-shadow: 1px 1px 2px goldenrod;
 }
 
+/* Play Area */
 .playarea {
   display: flex;
   flex-direction: row;
