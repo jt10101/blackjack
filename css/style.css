@@ -150,10 +150,11 @@ body {
 }
 
 #nextgame {
-  margin: 60 0 0 0;
+  margin: 25 0 0 0;
   height: 40px;
+  width: 170px;
   font-family: "rosarivo";
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .cardface {
@@ -301,7 +302,7 @@ ol {
 #volumemute {
   width: 80px;
   height: auto;
-  margin: 20;
+  margin: 160 0 0 100;
 }
 
 #volumeon {
