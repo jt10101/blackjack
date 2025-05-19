@@ -23,7 +23,7 @@
   </head>
   <body>
     <!-- Start Page -->
-    <section class="startpage" id="startpageid" hidden>
+    <section class="startpage" id="startpageid">
       <!-- <div id="welcomelogo"><img src= "https://i.imgur.com/GxML8GP.png" alt = "GAME LOGO GOES HERE" /></div> -->
       <div>
         <button class="startbutton" id="start">START GAME</button>
@@ -50,7 +50,7 @@
 
     <!-- Actual game board -->
      <audio id ="shufflesound" src="./sounds/shuffling-cards-01-86984.mp3"></audio>
-    <section class="gameboard" id="gameboardid">
+    <section class="gameboard" id="gameboardid" hidden>
       <div class="gameheader">
         <div id="logo">BLACKJACK21</div>
         <div id="roundnumber">Round 1 of 3</div>
@@ -153,6 +153,6 @@
       </div>
     </section>
   </body>
-  <script defer type="module" src="./js/app.js"></script>
+  <script type="module" src="./js/app.js"></script>
 
 </html>
