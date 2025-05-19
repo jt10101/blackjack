@@ -140,6 +140,7 @@ const startGame = () => {
   gamePage.style.display = "flex";
   shuffleSound.play();
   shuffleSound.playbackRate = 1.5;
+  shuffleSound.volume = 0.4;
   bgmSong.play();
   bgmSong.volume = 0.3;
 };
@@ -456,7 +457,8 @@ const nextGame = () => {
   standButtonElement.disabled = true;
   nextButton.disabled = true;
   shuffleSound.play();
-  shuffleSound.playbackRate = 1.5;
+  shuffleSound.playbackRate = 2;
+
   dealcards();
 };
 

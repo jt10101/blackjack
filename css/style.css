@@ -232,7 +232,6 @@ body {
   border: solid 5px #7e4029;
   border-radius: 40px;
 
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -250,12 +249,12 @@ img {
   margin: 0 0 80 0;
 }
 
-#startbutton {
-  display: flex;
-  flex-direction: column;
+.startbutton,
+.howtobutton {
   justify-content: center;
   width: 200px;
-  height: 80px;
+  height: 30px;
+  margin: 5 0 5 0;
 }
 
 /* How to page */
