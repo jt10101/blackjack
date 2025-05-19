@@ -1,7 +1,7 @@
 body {
   display: flex;
   margin: 5 auto;
-  background-color: gray;
+  background-color: darkgray;
   font-family: sans-serif;
 }
 
@@ -138,7 +138,7 @@ body {
   width: 100px;
 }
 .submitbet {
-  height: 30px;
+  height: 35px;
   width: 50px;
 }
 
@@ -149,9 +149,11 @@ body {
 
 #hit {
   background-color: lightgreen;
+  width: 80px;
 }
 #stand {
   background-color: lightcoral;
+  width: 80px;
 }
 
 .cardface {
@@ -222,8 +224,8 @@ body {
 /* start page CSS  */
 .startpage {
   /* background-color: #36654d; */
+  display: flex;
   background-image: url(../Gemini_Generated_Image_2mz4s42mz4s42mz4.png);
-
   font-family: "rosarivo";
   margin: auto;
   height: 680px;
@@ -256,6 +258,11 @@ img {
   width: 200px;
   height: 80px;
   /* margin: 100px; */
+}
+
+#nextgame {
+  margin: 60 0 0 0;
+  height: 40px;
 }
 
 /* How to page */
