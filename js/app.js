@@ -37,7 +37,7 @@ const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "Player 1 Turn!",
   round: 1,
-  totalround: 3,
+  totalround: 1,
   leaderboard: [],
   ranking: [],
 };
@@ -452,8 +452,8 @@ const end = () => {
   let winnerMessage = document.getElementById(`${winnerIndex + 1}-1`);
   winnerMessage.setAttribute("class", "winner");
   winnerMessage.textContent = "WINNER!";
-  for (let i = 1; i < game[winnerIndex].cards; i++) {
-    let winnerCard = document.getElementById(`${winnerIndex + 1}-${i + 1}`);
+  for (let i = 2; i < game[winnerIndex].cards.length + 1; i++) {
+    let winnerCard = document.getElementById(`${winnerIndex + 1}-${i}`);
     winnerCard.setAttribute("class", "cardempty");
     winnerCard.textContent = "";
   }
