@@ -91,7 +91,7 @@ const gamestate = {
   turn: 0, // 0 = p1, 1 = p2, 2 = p3 ...
   message: "Player 1 Turn!",
   round: 1,
-  totalround: 3,
+  totalround: 2,
   leaderboard: [],
   ranking: [],
 };
@@ -124,8 +124,8 @@ const howToButton = document.getElementById("howto");
 const returnButton = document.querySelector(".returntomain");
 const howToPage = document.querySelector(".howtopage");
 
-// Game Summary Page
-const summaryPage = document.getElementById("summarypage");
+// // Game Summary Page
+// const summaryPage = document.getElementById("summarypage");
 
 // Sounds
 const shuffleSound = document.getElementById("shufflesound");
@@ -227,7 +227,6 @@ const standActions = () => {
     standButtonElement.disabled = true;
     gamestate.message = `Dealer's Turn!`;
     dealerActions();
-    nextButton.disabled = false;
   }
 
   renderMsg();
@@ -252,16 +251,21 @@ const dealerActions = () => {
       dealerValue();
     }
   }
-
-  dealerRender();
-  settlement();
-  rankingRender();
-  renderRoundDetails();
+  if (gamestate.round >= gamestate.totalround) {
+    dealerRender();
+    settlement();
+    rankingRender();
+    renderRoundDetails();
+    end();
+  } else {
+    dealerRender();
+    settlement();
+    rankingRender();
+    renderRoundDetails();
+    nextButton.disabled = false;
+  }
   console.log(game);
   console.log(gamestate);
-  if (gamestate.round === gamestate.totalround) {
-    summary();
-  }
 };
 
 /* Settlement Function */
@@ -471,8 +475,13 @@ const resetleaderboard = () => {
   gamestate.ranking.length = 0;
 };
 
-/* Summary Page */
-const summary = () => {};
+/* End Game */
+const end = () => {
+  betAmount.disabled = true;
+  betButtonElement.disabled = true;
+  hitButtonElement.disabled = true;
+  standButtonElement.disabled = true;
+};
 
 //---------------------------- Event Listeners ----------------------------//
 
