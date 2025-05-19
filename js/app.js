@@ -126,6 +126,11 @@ const howToPage = document.querySelector(".howtopage");
 
 // Sounds
 const shuffleSound = document.getElementById("shufflesound");
+const bgmSong = document.getElementById("bgm");
+
+// Audio
+const volOn = document.getElementById("volumeon");
+const volMute = document.getElementById("volumemute");
 
 //---------------------------- Sub Functions ----------------------------//
 /* Start game */
@@ -134,6 +139,8 @@ const startGame = () => {
   gamePage.style.display = "flex";
   shuffleSound.play();
   shuffleSound.playbackRate = 1.5;
+  bgmSong.play();
+  bgmSong.volume = 0.3;
 };
 
 const howTo = () => {
@@ -496,6 +503,19 @@ const end = () => {
   }
 };
 
+// Audio Function
+const volumeOn = () => {
+  bgmSong.volume = 0.3;
+  volMute.style.display = "flex";
+  volOn.style.display = "none";
+};
+
+const volumeMute = () => {
+  bgmSong.volume = 0;
+  volMute.style.display = "none";
+  volOn.style.display = "flex";
+};
+
 //---------------------------- Event Listeners ----------------------------//
 
 betButtonElement.addEventListener("click", betActions);
@@ -505,6 +525,8 @@ nextButton.addEventListener("click", nextGame);
 startButton.addEventListener("click", startGame);
 howToButton.addEventListener("click", howTo);
 returnButton.addEventListener("click", returnMain);
+volOn.addEventListener("click", volumeOn);
+volMute.addEventListener("click", volumeMute);
 
 //---------------------------- Main Function ----------------------------//
 
