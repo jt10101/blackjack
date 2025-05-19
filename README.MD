@@ -1,6 +1,6 @@
 # Project 1: Building a Web-based Browser Game
 
-![alt text](image.png)
+![alt text](images/gamelogo.png)
 
 ## Background and Context : Why Blackjack?
 
