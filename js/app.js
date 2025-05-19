@@ -127,6 +127,7 @@ const howToPage = document.querySelector(".howtopage");
 // Sounds
 const shuffleSound = document.getElementById("shufflesound");
 const bgmSong = document.getElementById("bgm");
+const chipsSound = document.getElementById("chipssound");
 
 // Audio
 const volOn = document.getElementById("volumeon");
@@ -296,6 +297,7 @@ const settlement = () => {
   }
   render();
   leaderboard();
+  chipsSound.play();
 };
 
 /* Render Functions */
