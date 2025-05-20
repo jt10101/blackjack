@@ -214,8 +214,6 @@ const dealerActions = () => {
     dealerRender();
     settlement();
     rankingRender();
-    // renderRoundDetails(); // might not need this, testing
-    // resetleaderboard(); // testing if i need this
     end();
   } else {
     dealerRender();
@@ -224,8 +222,6 @@ const dealerActions = () => {
     renderRoundDetails();
     nextButton.disabled = false;
   }
-  console.log(game);
-  console.log(gamestate);
 };
 
 /* Settlement Function */
